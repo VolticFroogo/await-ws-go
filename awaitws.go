@@ -5,15 +5,15 @@ import (
 	"sync"
 )
 
-type Server struct {
+type Client struct {
 	conn                 *websocket.Conn
 	nextID               int
 	waitingResponses     map[int]waitingResponse
 	waitingResponseMutex sync.Mutex
 }
 
-func NewServer(conn *websocket.Conn) Server {
-	return Server{
+func NewClient(conn *websocket.Conn) Client {
+	return Client{
 		conn:                 conn,
 		nextID:               0,
 		waitingResponses:     make(map[int]waitingResponse),

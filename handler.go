@@ -1,6 +1,6 @@
 package awaitws
 
-func (server *Server) HandleResponse(res map[string]interface{}) (handled bool) {
+func (client *Client) HandleResponse(res map[string]interface{}) (handled bool) {
 	if responseInterface, ok := res["response"]; ok {
 		response, ok := responseInterface.(bool)
 		if !ok || !response {
@@ -23,7 +23,7 @@ func (server *Server) HandleResponse(res map[string]interface{}) (handled bool) 
 
 	id := int(idFloat)
 
-	for _, waitingRes := range server.waitingResponses {
+	for _, waitingRes := range client.waitingResponses {
 		if waitingRes.ID != id {
 			continue
 		}
@@ -34,7 +34,7 @@ func (server *Server) HandleResponse(res map[string]interface{}) (handled bool) 
 		}
 	}
 
-	delete(server.waitingResponses, id)
+	delete(client.waitingResponses, id)
 
 	return
 }
