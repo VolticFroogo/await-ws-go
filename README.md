@@ -12,6 +12,8 @@ so you can still keep things exactly how you want, but with these simple request
     - [Dependencies](#dependencies)
     - [Create a client](#create-a-client)
     - [Send a request](#send-a-request)
+    - [Handle a request](#handle-a-request)
+    - [Handle a response](#handle-a-response)
 
 ### The problem
 
