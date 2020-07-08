@@ -14,9 +14,7 @@ func (client *Client) Request(msg interface{}) (wait chan AwaitedResponse, err e
 	wait = make(chan AwaitedResponse)
 
 	// Add the channel to the waiting response map.
-	id := client.newWaitingResponse(waitingResponse{
-		Chan: wait,
-	})
+	id := client.newWaitingResponse(wait)
 
 	// Write the request the WebSocket connection.
 	err = client.conn.WriteJSON(message{

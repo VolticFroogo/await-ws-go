@@ -5,12 +5,7 @@ type AwaitedResponse struct {
 	Err     error
 }
 
-type waitingResponse struct {
-	ID   int
-	Chan chan AwaitedResponse
-}
-
-func (client *Client) newWaitingResponse(response waitingResponse) int {
+func (client *Client) newWaitingResponse(response chan AwaitedResponse) int {
 	// Use a mutex to prevent write collisions.
 	client.waitingResponseMutex.Lock()
 	defer client.waitingResponseMutex.Unlock()
@@ -19,8 +14,7 @@ func (client *Client) newWaitingResponse(response waitingResponse) int {
 	id := client.nextID
 	client.nextID++
 
-	// Set the ID to the response and add the response to the map.
-	response.ID = id
+	// Add the response to the map.
 	client.waitingResponses[id] = response
 
 	return id

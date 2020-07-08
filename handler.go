@@ -33,17 +33,10 @@ func (client *Client) HandleResponse(msg map[string]interface{}) (handled bool) 
 	// Convert the float64 to an int.
 	id := int(idFloat)
 
-	// Find the waitingResponse this response pertains to.
-	for _, waitingRes := range client.waitingResponses {
-		if waitingRes.ID != id {
-			continue
-		}
-
-		// Send the message to the relevant channel.
-		waitingRes.Chan <- AwaitedResponse{
-			Message: msg["message"],
-			Err:     nil,
-		}
+	// Send the message to the relevant channel.
+	client.waitingResponses[id] <- AwaitedResponse{
+		Message: msg["message"],
+		Err:     nil,
 	}
 
 	// Remove the waitingResponse from the map.
