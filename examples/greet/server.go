@@ -50,6 +50,7 @@ func ws(w http.ResponseWriter, r *http.Request) {
 	}()
 
 	for {
+		// Decode the incoming message as a mapstructure.
 		var msg map[string]interface{}
 		err = c.ReadJSON(&msg)
 		if err != nil {
@@ -61,11 +62,16 @@ func ws(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 
+		// If the message is a response, await-ws will handle it, just continue.
 		if awaitClient.HandleResponse(msg) {
 			continue
 		}
 
+		// Verify that the message is a request.
 		if awaitClient.IsRequest(msg) {
+			// Respond to the request prepending "Hello " to their message.
+			// In a lot of scenarios, you'll have complex types here, and not just a string as the message.
+			// To decode a complex type, check out this library: https://github.com/mitchellh/mapstructure
 			err = awaitClient.Respond(msg, "Hello "+msg["message"].(string))
 			if err != nil {
 				log.Print(err)
