@@ -5,14 +5,14 @@ type awaitMessage struct {
 	Message interface{} `json:"message"`
 }
 
-func (awaitWS *Server) Message(msg interface{}) (wait chan AwaitedResponse, err error) {
+func (server *Server) Message(msg interface{}) (wait chan AwaitedResponse, err error) {
 	wait = make(chan AwaitedResponse)
 
-	id := awaitWS.newWaitingResponse(waitingResponse{
+	id := server.newWaitingResponse(waitingResponse{
 		Chan: wait,
 	})
 
-	err = awaitWS.conn.WriteJSON(awaitMessage{
+	err = server.conn.WriteJSON(awaitMessage{
 		ID:      id,
 		Message: msg,
 	})

@@ -10,15 +10,15 @@ type waitingResponse struct {
 	Chan chan AwaitedResponse
 }
 
-func (awaitWS *Server) newWaitingResponse(response waitingResponse) int {
-	awaitWS.waitingResponseMutex.Lock()
-	defer awaitWS.waitingResponseMutex.Unlock()
+func (server *Server) newWaitingResponse(response waitingResponse) int {
+	server.waitingResponseMutex.Lock()
+	defer server.waitingResponseMutex.Unlock()
 
-	id := awaitWS.nextID
-	awaitWS.nextID++
+	id := server.nextID
+	server.nextID++
 
 	response.ID = id
-	awaitWS.waitingResponses[id] = response
+	server.waitingResponses[id] = response
 
 	return id
 }
