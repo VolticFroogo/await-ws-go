@@ -1,15 +1,24 @@
 package awaitws
 
-func (awaitWS *Server) HandleResponse(res map[string]interface{}) bool {
-	if response, ok := res["response"]; ok {
-		if !response.(bool) {
-			return false
+func (awaitWS *Server) HandleResponse(res map[string]interface{}) (handled bool) {
+	if responseInterface, ok := res["response"]; ok {
+		response, ok := responseInterface.(bool)
+		if !ok || !response {
+			return
 		}
+	} else {
+		return
 	}
 
-	idFloat, ok := res["id"].(float64)
+	handled = true
+	idInterface, ok := res["id"]
 	if !ok {
-		return true
+		return
+	}
+
+	idFloat, ok := idInterface.(float64)
+	if !ok {
+		return
 	}
 
 	id := int(idFloat)
@@ -27,5 +36,5 @@ func (awaitWS *Server) HandleResponse(res map[string]interface{}) bool {
 
 	delete(awaitWS.waitingResponses, id)
 
-	return true
+	return
 }
