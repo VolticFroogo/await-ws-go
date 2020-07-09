@@ -8,6 +8,7 @@ so you can still keep things exactly how you want, but with these simple request
 - [Await WS Go](#await-ws-go)
     - [The problem](#the-problem)
     - [The solution](#the-solution)
+- [Libraries](#libraries)
 - [Getting started](#getting-started)
     - [Dependencies](#dependencies)
     - [Create a client](#create-a-client)
@@ -28,13 +29,23 @@ layer on top of WebSockets to allow this medium of communication.
 This library implements the latter of the two solutions, adding an additional layer on top
 of WebSockets allowing you to send a request, and wait on a channel for a response.
 
+## Libraries
+
+Due to the nature of WebSockets, to use this library, both the server and client must use a form
+of this library, or implement the protocols used in this library.
+
+If a library is unavailable for your desired language, feel free to
+[create a library request](https://github.com/VolticFroogo/await-ws-go/issues/new?labels=enhancement&template=library-request.md). 
+
+Language | Type              | Repository
+-------- | ----------------- | ----------
+Go       | Server and Client | [await-ws-go](https://github.com/VolticFroogo/await-ws-go)
+Dart     | Client            | [await-ws-dart](https://github.com/VolticFroogo/await-ws-dart)
+
 ## Getting started
 
 This will be using code from [the greet example](examples/greet), so if you need to refer
 to the code in larger chunks, check out that example.
-
-NOTE: due to the nature of WebSockets, both the server, and client must use a form of
-library, or implement the protocols used in this library.
 
 Keep in mind, this is not a guide on WebSockets, just this library,
 so it will assume you have knowledge on WebSockets and already have a working client.
