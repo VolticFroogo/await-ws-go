@@ -44,7 +44,7 @@ func setupTestClient_Request() (srv *http.Server, msgChan chan map[string]interf
 	})
 
 	srv = &http.Server{
-		Addr:    ":8080",
+		Addr:    "localhost:8080",
 		Handler: r,
 	}
 
