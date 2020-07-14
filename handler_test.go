@@ -33,6 +33,9 @@ func TestClient_HandleResponse(t *testing.T) {
 	assert.Equal(t, msg["message"], response.Message)
 	assert.Nil(t, response.Err)
 
+	client.waitingResponseMutex.Lock()
+	defer client.waitingResponseMutex.Unlock()
+
 	_, ok := client.waitingResponses[0]
 	assert.False(t, ok)
 }
