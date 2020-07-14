@@ -12,7 +12,7 @@ func (client *Client) Respond(in map[string]interface{}, out interface{}) (err e
 	// Assert that the ID interface is a float64.
 	idFloat, ok := idInterface.(float64)
 	if !ok {
-		err = ErrorBadID
+		err = ErrBadID
 		return
 	}
 
