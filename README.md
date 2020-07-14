@@ -1,4 +1,6 @@
 # Await WS Go
+[![Go Build / Test Status](https://github.com/VolticFroogo/await-ws-go/workflows/Go/badge.svg)](https://github.com/VolticFroogo/await-ws-go/actions?query=workflow%3AGo)
+[![Code Coverage](https://codecov.io/gh/VolticFroogo/await-ws-go/branch/master/graph/badge.svg)](https://codecov.io/gh/VolticFroogo/await-ws-go)
 
 Simplify WebSockets by allowing you to await upon requests.
 
