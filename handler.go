@@ -33,11 +33,11 @@ func (client *Client) HandleResponse(msg map[string]interface{}) (handled bool) 
 	// Convert the float64 to an int.
 	id := int(idFloat)
 
-	// Make a copy of the waitingResponse.
-	wait := client.waitingResponses[id]
-
 	// Prevent write collisions.
 	client.waitingResponseMutex.Lock()
+
+	// Make a copy of the waitingResponse.
+	wait := client.waitingResponses[id]
 
 	// Remove the waitingResponse from the map.
 	delete(client.waitingResponses, id)
