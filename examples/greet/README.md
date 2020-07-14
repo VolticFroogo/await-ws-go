@@ -5,8 +5,8 @@ and get responses which are greeting that name.
 
 ### View the source code
 
-[Server source code (server.go)](server.go)\
-[Client source code (client.go)](client.go)
+[Server source code (server.go)](server/server.go)\
+[Client source code (client.go)](client/client.go)
 
 ### How to run
 
