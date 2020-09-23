@@ -39,10 +39,11 @@ of this library, or implement the protocols used in this library.
 If a library is unavailable for your desired language, feel free to
 [create a library request](https://github.com/VolticFroogo/await-ws-go/issues/new?labels=enhancement&template=library-request.md). 
 
-Language | Type              | Repository
--------- | ----------------- | ----------
-Go       | Server and Client | [await-ws-go](https://github.com/VolticFroogo/await-ws-go)
-Dart     | Client            | [await-ws-dart](https://github.com/VolticFroogo/await-ws-dart)
+Language   | Type              | Repository
+---------- | ----------------- | ----------
+Go         | Server and Client | [await-ws-go](https://github.com/VolticFroogo/await-ws-go)
+Dart       | Client            | [await-ws-dart](https://github.com/VolticFroogo/await-ws-dart)
+TypeScript | Client            | [await-ws-ts](https://github.com/VolticFroogo/await-ws-ts)
 
 ## Getting started
 
